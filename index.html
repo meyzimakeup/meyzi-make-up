@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - MEYZI MAKE UP</title>
+    <!-- Import FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Import Font chữ Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Tông màu được lấy cảm hứng từ ảnh logo của bạn */
+            --bg-gradient: linear-gradient(135deg, #fcfaf8 0%, #ebdacf 100%);
+            --text-main: #4a3f35;
+            --text-muted: #8c7b6d;
+            --accent-color: #c89f76; /* Màu vàng gold ấm */
+            --card-glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-main);
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Khối chính với hiệu ứng kính mờ (Glassmorphism) */
+        .contact-wrapper {
+            background: var(--card-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            max-width: 900px;
+            width: 100%;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(163, 137, 112, 0.15);
+            text-align: center;
+        }
+
+        /* Style cho Logo / Avatar */
+        .logo-container {
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .brand-logo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 15px 35px rgba(200, 159, 118, 0.35);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(200, 159, 118, 0.5);
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            letter-spacing: 3px;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+            font-style: italic;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Lưới hiển thị Card */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #f0eae4;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transform-style: preserve-3d;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s;
+            opacity: 0; 
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 15px 30px rgba(200, 159, 118, 0.15);
+            background: #ffffff;
+        }
+
+        .icon-box {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: #fcf6f2;
+            color: var(--accent-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            transform: translateZ(30px); 
+        }
+
+        /* Hover Đổi Màu Từng Brand */
+        .card-phone:hover .icon-box { background: #059669; color: #fff; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3); }
+        .card-phone:hover { border-color: #059669; }
+
+        .card-fb:hover .icon-box { background: #1877F2; color: #fff; box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3); }
+        .card-fb:hover { border-color: #1877F2; }
+
+        .card-ig:hover .icon-box { background: #E4405F; color: #fff; box-shadow: 0 10px 20px rgba(228, 64, 95, 0.3); }
+        .card-ig:hover { border-color: #E4405F; }
+
+        .card-zl:hover .icon-box { background: #0068FF; color: #fff; box-shadow: 0 10px 20px rgba(0, 104, 255, 0.3); }
+        .card-zl:hover { border-color: #0068FF; }
+
+        .card-map:hover .icon-box { background: #EA4335; color: #fff; box-shadow: 0 10px 20px rgba(234, 67, 53, 0.3); }
+        .card-map:hover { border-color: #EA4335; }
+
+        .contact-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            transform: translateZ(20px);
+        }
+
+        .contact-detail {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transform: translateZ(20px);
+        }
+
+        /* Nhịp đập (Pulse) cho nút Hotline */
+        .pulse {
+            animation: pulse-animation 2s infinite;
+        }
+
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0 rgba(200, 159, 118, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(200, 159, 118, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(200, 159, 118, 0); }
+        }
+
+        /* Keyframes */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 480px) {
+            .contact-wrapper { padding: 40px 20px; border-radius: 20px; }
+            .brand-name { font-size: 1.8rem; }
+            .brand-logo { width: 120px; height: 120px; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contact-wrapper">
+        <!-- Khu vực hiển thị Logo -->
+        <div class="logo-container">
+            <img src="img/avt.jpg" alt="MEYZI MAKEUP Logo" class="brand-logo">
+        </div>
+
+        <h1 class="brand-name">MEYZI MAKE UP</h1>
+        <p class="subtitle">"Tỏa sáng theo cách của riêng bạn"</p>
+
+        <div class="contact-grid">
+            
+            <!-- Điện thoại / Hotline -->
+            <a href="tel:0868390315" class="contact-card card-phone">
+                <div class="icon-box pulse"><i class="fa-solid fa-phone-volume"></i></div>
+                <h3 class="contact-title">Gọi Hotline</h3>
+                <p class="contact-detail">0868 390 315</p>
+            </a>
+
+            <!-- Zalo -->
+            <a href="https://zalo.me/0868390315" target="_blank" class="contact-card card-zl">
+                <div class="icon-box">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo" width="30" height="30" class="zalo-icon" style="filter: grayscale(100%) sepia(20%) hue-rotate(350deg); transition: 0.3s; opacity: 0.7;">
+                </div>
+                <h3 class="contact-title">Nhắn tin Zalo</h3>
+                <p class="contact-detail">0868 390 315</p>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/1BvgBfh7mc/?mibextid=wwXIfr" target="_blank" class="contact-card card-fb">
+                <div class="icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                <h3 class="contact-title">Facebook</h3>
+                <p class="contact-detail">Meyzi Make Up</p>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/tuyetmeip?stkn=NTZreTljcGF6eDcx" target="_blank" class="contact-card card-ig">
+                <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <h3 class="contact-title">Instagram</h3>
+                <p class="contact-detail">@tuyetmeip</p>
+            </a>
+
+            <!-- Google Map -->
+            <a href="https://maps.app.goo.gl/hLKiDFyQsjabJEAq8?g_st=ic" target="_blank" class="contact-card card-map">
+                <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                <h3 class="contact-title">Chỉ đường</h3>
+                <p class="contact-detail">Xem trên Google Map</p>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.contact-card');
+            
+            // 1. Hiệu ứng Fade In Up lần lượt cho các Card
+            // Bắt đầu từ 0.5s để chờ Logo và Title hiện ra trước
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${0.5 + index * 0.15}s`;
+            });
+
+            // 2. Hiệu ứng 3D Tilt khi hover chuột (chỉ chạy trên Desktop mượt mà)
+            if(window.matchMedia("(hover: hover)").matches) {
+                cards.forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left; 
+                        const y = e.clientY - rect.top;  
+                        
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        const rotateX = ((y - centerY) / centerY) * -8; 
+                        const rotateY = ((x - centerX) / centerX) * 8;
+                        
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                    });
+                });
+            }
+
+            // 3. Hiệu ứng đổi màu icon Zalo khi hover
+            const zaloCard = document.querySelector('.card-zl');
+            const zaloImg = zaloCard.querySelector('.zalo-icon');
+            
+            zaloCard.addEventListener('mouseenter', () => {
+                zaloImg.style.filter = 'none';
+                zaloImg.style.opacity = '1';
+            });
+            
+            zaloCard.addEventListener('mouseleave', () => {
+                // Tông xám ngả vàng gold nhẹ khi không hover để hợp nền
+                zaloImg.style.filter = 'grayscale(100%) sepia(20%) hue-rotate(350deg)';
+                zaloImg.style.opacity = '0.7';
+            });
+        });
+    </script>
+</body>
+</html>
